@@ -71,77 +71,105 @@ function App() {
   }
 
   return (
-    <form>
-      <FormTab
-        title='Personal'
-        isActive={activeIndex === 0}
-        onShow={() => setActiveIndex(0)}
-      >
-        <div className='fields'>
-        <input
-          type='text'
-          value={general.name}
-          onChange={(e) => setGeneral({
-            ...general,
-            name: e.target.value,
-          })}
-        />
-        <input
-          type='text'
-          value={general.email}
-          onChange={(e) => setGeneral({
-            ...general,
-            email: e.target.value,
-          })}
-        />
-        <input
-          type='text'
-          value={general.tel}
-          onChange={(e) => setGeneral({
-            ...general,
-            tel: e.target.value,
-          })}
-        />
-        <input
-          type='text'
-          value={general.location}
-          onChange={(e) => setGeneral({
-            ...general,
-            location: e.target.value,
-          })}
-        />
-      </div>
-      </FormTab>
-      <FormTab
-        title='Education'
-        isActive={activeIndex === 1}
-        onShow={() => setActiveIndex(1)}
-      >
-        {education.map(target =>
-          <Education 
-            key={target.id}
-            id={target.id}
-            update={updateEducation}
-            target={target}
+    <>
+      <form>
+        <FormTab
+          title='Personal'
+          isActive={activeIndex === 0}
+          onShow={() => setActiveIndex(0)}
+        >
+          <div className='fields'>
+          <input
+            type='text'
+            value={general.name}
+            onChange={(e) => setGeneral({
+              ...general,
+              name: e.target.value,
+            })}
           />
+          <input
+            type='text'
+            value={general.email}
+            onChange={(e) => setGeneral({
+              ...general,
+              email: e.target.value,
+            })}
+          />
+          <input
+            type='text'
+            value={general.tel}
+            onChange={(e) => setGeneral({
+              ...general,
+              tel: e.target.value,
+            })}
+          />
+          <input
+            type='text'
+            value={general.location}
+            onChange={(e) => setGeneral({
+              ...general,
+              location: e.target.value,
+            })}
+          />
+        </div>
+        </FormTab>
+        <FormTab
+          title='Education'
+          isActive={activeIndex === 1}
+          onShow={() => setActiveIndex(1)}
+        >
+          {education.map(target =>
+            <Education 
+              key={target.id}
+              id={target.id}
+              update={updateEducation}
+              target={target}
+            />
+          )}
+        </FormTab>
+        <FormTab
+          title='Experience'
+          isActive={activeIndex === 2}
+          onShow={() => setActiveIndex(2)}
+        >
+          {experience.map(target =>
+            <Experience
+              key={target.id}
+              id={target.id}
+              update={updateExperience}
+              target={target}
+            >
+            </Experience>)
+          }
+        </FormTab>
+      </form>
+      <div className='result'>
+        <div className='result-general'>
+          <p>{general.name}</p>
+          <p>{general.email}</p>
+          <p>{general.tel}</p>
+          <p>{general.location}</p>
+        </div>
+        {education.map(target => 
+          <div className='result-education' key={uuid()}>
+            <p>{target.name}</p>
+            <p>{target.degree}</p>
+            <p>{target.location}</p>
+            <p>{target.from}</p>
+            <p>{target.to}</p>
+          </div>
         )}
-      </FormTab>
-      <FormTab
-        title='Experience'
-        isActive={activeIndex === 2}
-        onShow={() => setActiveIndex(2)}
-      >
         {experience.map(target =>
-          <Experience
-            key={target.id}
-            id={target.id}
-            update={updateExperience}
-            target={target}
-          >
-          </Experience>)
-        }
-      </FormTab>
-    </form>
+          <div className='result-experience' key={uuid()}>
+            <p>{target.name}</p>
+            <p>{target.role}</p>
+            <p>{target.location}</p>
+            <p>{target.from}</p>
+            <p>{target.to}</p>
+          </div>
+        )}
+      </div>
+    </>
   )
 }
 
