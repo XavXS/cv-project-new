@@ -49,6 +49,14 @@ function App() {
       from: '2016',
       to: '2017',
       id: uuid(),
+    },
+    {
+      name: 'nother work place',
+      role: 'nother role',
+      location: 'a location',
+      from: '2077',
+      to: '2088',
+      id: uuid(),
     }
   ]);
 
@@ -155,29 +163,35 @@ function App() {
           }
         </FormTab>
       </form>
-      <div className='result'>
-        <div className='result-general'>
-          <h1>{general.name}</h1>
-          <p>{general.email}</p>
-          <p>{general.tel}</p>
-          <p>{general.location}</p>
+      <div className='result-container'>
+        <div className='result'>
+          <div className='result-general'>
+            <h1>{general.name}</h1>
+            <p>{general.email}</p>
+            <p>{general.tel}</p>
+            <p>{general.location}</p>
+          </div>
+          <h1>Education</h1>
+          {education.map(target =>
+            <div className='result-education' key={uuid()}>
+              <h2>{target.name}</h2>
+              <div className='accent-line'></div>
+              <h3>{target.degree}</h3>
+              <p>{target.location}</p>
+              <p>{target.from} ~ {target.to}</p>
+            </div>
+          )}
+          <h1>Experience</h1>
+          {experience.map(target =>
+            <div className='result-experience' key={uuid()}>
+              <h2>{target.name}</h2>
+              <div className='accent-line'></div>
+              <h3>{target.role}</h3>
+              <p>{target.location}</p>
+              <p>{target.from} ~ {target.to}</p>
+            </div>
+          )}
         </div>
-        {education.map(target => 
-          <div className='result-education' key={uuid()}>
-            <h2>{target.name}</h2>
-            <h3>{target.degree}</h3>
-            <p>{target.location}</p>
-            <p>{target.from} ~ {target.to}</p>
-          </div>
-        )}
-        {experience.map(target =>
-          <div className='result-experience' key={uuid()}>
-            <h2>{target.name}</h2>
-            <h3>{target.role}</h3>
-            <p>{target.location}</p>
-            <p>{target.from} ~ {target.to}</p>
-          </div>
-        )}
       </div>
     </>
   )

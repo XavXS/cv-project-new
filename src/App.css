@@ -9,26 +9,63 @@
   font-family: sans-serif;
 }
 
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(163, 163, 163);
+}
+
 .result {
   background-color: white;
-  color: black;
   border: 1px solid black;
-  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.result-general h1 {
+  font-size: 2.5rem;
+}
+
+.result h2 {
+  font-size: 1.4rem;
+  color: rgb(44, 44, 44);
+}
+
+.result h3 {
+  font-size: 1.1rem;
+  color: rgb(65, 65, 65);
+}
+
+.result p:not(.result-general > p){
+  color: rgb(90, 90, 90);
 }
 
 .result-general {
   text-align: center;
+  background-color: rgb(127, 170, 226);
+  padding: 32px 200px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 32px;
+.result-education, .result-experience, .result h1:not(.result-general h1){
+  padding: 0 128px;
+}
+
+.result-experience:last-child {
+  margin-bottom: 64px;
+}
+
+.accent-line {
+  height: 1px;
+  background-color: rgb(173, 173, 173);
+  margin-bottom: 8px;
 }
 
 label {
   display: flex;
+  align-items: center;
   gap: 4px;
 }
 
@@ -38,24 +75,36 @@ label span {
 }
 
 input {
-  width: 160px;
+  width: 256px;
+  border: 0;
+  padding: 4px 8px;
+  font-size: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background-color: rgb(82, 111, 150);
+  height: 100%;
 }
 
 .form-tab {
-  background-color: rgb(182, 182, 182);
+  background-color: rgb(116, 162, 221);
   padding: 32px;
 
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 28px;
 }
 
 .fields {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 #root {
   display: flex;
+  height: 100vh;
 }
