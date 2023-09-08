@@ -70,12 +70,42 @@ function App() {
     }));
   }
 
+  const addEducation = () => {
+    setEducation(education.concat({
+      name: 'new university',
+      degree: 'new degree',
+      location: 'new location',
+      from: 'start date',
+      to: 'end date',
+      id: uuid(),
+    }));
+  }
+
+  const removeEducation = (id) => {
+    setEducation(education.filter(element => element.id !== id));
+  }
+
   const updateExperience = (id, propName, value) => {
     setExperience(experience.map(element => {
       if(element.id === id)
         element[propName] = value;
       return element;
     }));
+  }
+
+  const addExperience = () => {
+    setExperience(experience.concat({
+      name: 'new experience',
+      role: 'new role',
+      location: 'new location',
+      from: 'start date',
+      to: 'end date',
+      id: uuid(),
+    }));
+  }
+
+  const removeExperience = (id) => {
+    setExperience(experience.filter(element => element.id !== id));
   }
 
   return (
@@ -143,9 +173,15 @@ function App() {
               key={target.id}
               id={target.id}
               update={updateEducation}
+              remove={removeEducation}
               target={target}
             />
           )}
+          <button 
+            className='add-button'
+            type='button'
+            onClick={addEducation}
+          >Add New</button>
         </FormTab>
         <FormTab
           title='Experience'
@@ -157,10 +193,16 @@ function App() {
               key={target.id}
               id={target.id}
               update={updateExperience}
+              remove={removeExperience}
               target={target}
             >
             </Experience>)
           }
+          <button 
+            className='add-button'
+            type='button'
+            onClick={addExperience}
+          >Add New</button>
         </FormTab>
       </form>
       <div className='result-container'>

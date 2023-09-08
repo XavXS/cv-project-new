@@ -1,6 +1,7 @@
-export default function Education({id, update, target}) {
+export default function Education({id, update, remove, target}) {
     return (
       <div className='fields'>
+        <button onClick={() => remove(id)}>remove</button>
         <label>
           <span>School</span>
           <input

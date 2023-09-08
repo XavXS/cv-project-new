@@ -1,6 +1,7 @@
-export default function Experience({id, update, target}) {
+export default function Experience({id, update, remove, target}) {
     return(
-      <div className='fields' key={id}>
+      <div className='fields'>
+        <button onClick={() => remove(id)}>remove</button>
         <label>
           <span>Company</span>
           <input
