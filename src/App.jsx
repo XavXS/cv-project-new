@@ -7,7 +7,7 @@ import Experience from './Experience';
 function App() {
   const [general, setGeneral] = useState(
     {
-      name: 'anony mouse',
+      name: 'Anony Mouse',
       email: 'anon@example.com',
       tel: '+1 123-456-XXXX',
       location: 'Los Santos, San Andreas',
@@ -79,39 +79,51 @@ function App() {
           onShow={() => setActiveIndex(0)}
         >
           <div className='fields'>
-          <input
-            type='text'
-            value={general.name}
-            onChange={(e) => setGeneral({
-              ...general,
-              name: e.target.value,
-            })}
-          />
-          <input
-            type='text'
-            value={general.email}
-            onChange={(e) => setGeneral({
-              ...general,
-              email: e.target.value,
-            })}
-          />
-          <input
-            type='text'
-            value={general.tel}
-            onChange={(e) => setGeneral({
-              ...general,
-              tel: e.target.value,
-            })}
-          />
-          <input
-            type='text'
-            value={general.location}
-            onChange={(e) => setGeneral({
-              ...general,
-              location: e.target.value,
-            })}
-          />
-        </div>
+            <label>
+              <span>Name</span>
+              <input
+              type='text'
+              value={general.name}
+              onChange={(e) => setGeneral({
+                ...general,
+                name: e.target.value,
+              })}
+            />
+            </label>
+            <label>
+              <span>Email</span>
+              <input
+              type='text'
+              value={general.email}
+              onChange={(e) => setGeneral({
+                ...general,
+                email: e.target.value,
+              })}
+            />
+            </label>
+            <label>
+              <span>Number</span>
+              <input
+              type='text'
+              value={general.tel}
+              onChange={(e) => setGeneral({
+                ...general,
+                tel: e.target.value,
+              })}
+            />
+            </label>
+            <label>
+              <span>Location</span>
+              <input
+              type='text'
+              value={general.location}
+              onChange={(e) => setGeneral({
+                ...general,
+                location: e.target.value,
+              })}
+            />
+            </label>
+          </div>
         </FormTab>
         <FormTab
           title='Education'
@@ -145,27 +157,25 @@ function App() {
       </form>
       <div className='result'>
         <div className='result-general'>
-          <p>{general.name}</p>
+          <h1>{general.name}</h1>
           <p>{general.email}</p>
           <p>{general.tel}</p>
           <p>{general.location}</p>
         </div>
         {education.map(target => 
           <div className='result-education' key={uuid()}>
-            <p>{target.name}</p>
-            <p>{target.degree}</p>
+            <h2>{target.name}</h2>
+            <h3>{target.degree}</h3>
             <p>{target.location}</p>
-            <p>{target.from}</p>
-            <p>{target.to}</p>
+            <p>{target.from} ~ {target.to}</p>
           </div>
         )}
         {experience.map(target =>
           <div className='result-experience' key={uuid()}>
-            <p>{target.name}</p>
-            <p>{target.role}</p>
+            <h2>{target.name}</h2>
+            <h3>{target.role}</h3>
             <p>{target.location}</p>
-            <p>{target.from}</p>
-            <p>{target.to}</p>
+            <p>{target.from} ~ {target.to}</p>
           </div>
         )}
       </div>
@@ -180,7 +190,7 @@ function FormTab({title, isActive, onShow, children}) {
       className='form-tab'
       onClick={onShow}
     >
-      <h2>{title}</h2>
+      <h2>{title}{isActive ? '▲' : '▼'}</h2>
       {isActive && children}
     </section>
   );  
